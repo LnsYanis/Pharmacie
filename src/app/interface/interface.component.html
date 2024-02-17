@@ -1,0 +1,10 @@
+<app-navbar></app-navbar>
+<div *ngIf="isAdmin">
+  <h3>Actions administratives</h3>
+  <button class="Ajout" (click)="redirigerVersAjoutProduit()">
+    Ajouter un Produit
+  </button>
+  <div *ngIf="successMessage" class="success-message">{{ successMessage }}</div>
+  <button class="Suprm" (click)="deleteProduct()">Supprimer un Produit</button>
+</div>
+<app-list-produits></app-list-produits>

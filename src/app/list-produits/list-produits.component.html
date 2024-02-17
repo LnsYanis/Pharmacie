@@ -1,0 +1,33 @@
+<div *ngIf="produits">
+  <div *ngFor="let produit of produits">
+    <form>
+      <label for="nom">{{ produit.nom }}</label>
+      <br />
+      <label for="prix">Prix: {{ produit.prix }}</label>
+      <br />
+      <label for="quantite">Quantité disponible: {{ produit.quantite }}</label>
+      <br />
+      <button
+        type="button"
+        (click)="ajouterAuPanier(produit)"
+        class="ajouter-panier"
+      >
+        Ajouter au panier
+      </button>
+      <div *ngIf="selectedProduit === produit">
+        <label for="quantite">Quantité à ajouter: </label>
+        <input
+          type="number"
+          [(ngModel)]="quantiteSelectionnee"
+          name="quantiteSelectionnee"
+          min="1"
+        />
+        <button type="button" (click)="validerAjoutAuPanier()">Valider</button>
+        <div *ngIf="messageQuantite" [class.error-message]="messageQuantite">
+          {{ messageQuantite }}
+        </div>
+      </div>
+    </form>
+    <hr />
+  </div>
+</div>

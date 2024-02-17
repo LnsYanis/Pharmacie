@@ -1,0 +1,41 @@
+.facture-details {
+  border: 2px solid #3498db;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 20px;
+  background-color: #ecf0f1;
+}
+
+.facture-details p {
+  margin: 5px 0;
+}
+
+.facture-details ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.facture-details li {
+  margin-bottom: 5px;
+}
+
+.commande-details {
+  border: 2px solid #3498db;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 20px;
+  background-color: #ecf0f1;
+}
+
+.commande-details p {
+  margin: 5px 0;
+}
+
+.commande-details ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.commande-details li {
+  margin-bottom: 5px;
+}

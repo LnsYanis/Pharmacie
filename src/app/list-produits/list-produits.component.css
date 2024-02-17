@@ -1,0 +1,63 @@
+.list-produits {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.produit-card {
+  width: 300px;
+  margin: 20px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.produit-card label {
+  font-weight: bold;
+}
+
+.prix-label {
+  color: #4caf50;
+}
+
+.quantite-label {
+  color: #2196f3;
+}
+
+.ajouter-panier {
+  background-color: #4caf50;
+  color: white;
+  cursor: pointer;
+  padding: 10px;
+  border: none;
+  border-radius: 3px;
+}
+
+.ajouter-panier:hover {
+  background-color: #45a049;
+}
+
+.dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dialog-box {
+  background: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.error-message {
+  color: red;
+}

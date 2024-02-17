@@ -1,0 +1,189 @@
+<app-navbar></app-navbar>
+<div *ngIf="!panierVide; else panierVideMessage" class="container">
+  <div class="text-center">
+    <h1>Mon Panier</h1>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div *ngFor="let commande of commandes">
+        <div class="commande-details">
+          <div class="form-group">
+            <label>Nom du Produit: </label>
+            <input
+              type="text"
+              class="form-control"
+              [value]="commande.nom"
+              readonly
+            />
+          </div>
+
+          <div class="form-group">
+            <label>Prix: </label>
+            <input
+              type="text"
+              class="form-control"
+              [value]="commande.prix"
+              readonly
+            />
+          </div>
+
+          <div class="form-group">
+            <label>Quantité: </label>
+            <input
+              type="text"
+              class="form-control"
+              [value]="commande.quantite"
+              [readonly]="!commande.editMode"
+              (input)="validateQuantity(commande, $event)"
+            />
+          </div>
+
+          <div class="form-group">
+            <label>Prix Total: </label>
+            <input
+              type="text"
+              class="form-control"
+              [value]="commande.prixTotalDuProduit"
+              readonly
+            />
+          </div>
+
+          <button
+            type="button"
+            class="btn btn-delete"
+            (click)="supprimerCommande(commande)"
+            [disabled]="commande.editMode"
+          >
+            Supprimer Cette Commande
+          </button>
+
+          <hr />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center" *ngIf="commandes.length > 0">
+    <div class="col-md-8">
+      <h2 class="text-center">Total Du Panier :</h2>
+    </div>
+  </div>
+  <div
+    class="row justify-content-center total-form"
+    *ngIf="commandes.length > 0"
+  >
+    <div class="col-md-8">
+      <form [formGroup]="totalForm">
+        <div class="form-group border border-primary p-3 rounded bg-light">
+          <div class="form-group">
+            <label>Prix Total: </label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="prixTotal"
+              readonly
+            />
+          </div>
+
+          <div class="form-group">
+            <label>Quantité Totale: </label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="quantiteTotale"
+              readonly
+            />
+          </div>
+
+          <div class="d-flex justify-content-between">
+            <button
+              type="button"
+              class="btn btn-success"
+              (click)="payerPanier()"
+            >
+              Confirmer le Panier
+            </button>
+            <button
+              type="button"
+              class="btn btn-danger"
+              (click)="supprimerPanier()"
+            >
+              Supprimer le Panier
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div *ngIf="facture" class="facture-details container">
+  <h2 class="text-center">Merci de votre Achat ! Voici votre facture !</h2>
+
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="form-group">
+        <label>ID Facture: </label>
+        <input type="text" class="form-control" [value]="facture.id" readonly />
+      </div>
+
+      <div class="form-group">
+        <label>Valeur: </label>
+        <input
+          type="text"
+          class="form-control"
+          [value]="facture.valeur"
+          readonly
+        />
+      </div>
+
+      <div class="form-group">
+        <label>Quantités: </label>
+        <input
+          type="text"
+          class="form-control"
+          [value]="facture.quantites"
+          readonly
+        />
+      </div>
+
+      <div class="form-group">
+        <label>Nom du Client: </label>
+        <input
+          type="text"
+          class="form-control"
+          [value]="facture.client.nom"
+          readonly
+        />
+      </div>
+
+      <div class="form-group">
+        <label>Prénom du Client: </label>
+        <input
+          type="text"
+          class="form-control"
+          [value]="facture.client.prenom"
+          readonly
+        />
+      </div>
+
+      <div class="form-group">
+        <label>Email du Client: </label>
+        <input
+          type="text"
+          class="form-control"
+          [value]="facture.client.email"
+          readonly
+        />
+      </div>
+      <button type="button" class="btn btn-primary" (click)="retourAccueil()">
+        Retour à l'Accueil
+      </button>
+    </div>
+  </div>
+</div>
+
+<ng-template #panierVideMessage>
+  <div class="text-center">
+    <strong>Votre panier est vide pour l'instant.</strong>
+  </div>
+</ng-template>

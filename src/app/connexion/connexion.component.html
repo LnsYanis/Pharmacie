@@ -1,0 +1,35 @@
+<div class="container">
+  <h2>Connexion</h2>
+  <form #connexionForm="ngForm">
+    <div class="form-group">
+      <label for="email">Email :</label>
+      <input
+        type="text"
+        id="email"
+        name="email"
+        [(ngModel)]="utilisateur.email"
+        class="form-control"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="mdp">Mot de passe :</label>
+      <input
+        type="password"
+        id="mdp"
+        name="mdp"
+        [(ngModel)]="utilisateur.mdp"
+        class="form-control"
+        required
+      />
+    </div>
+    <button type="button" (click)="seConnecter()" class="btn btn-primary">
+      Se connecter
+    </button>
+  </form>
+  <p *ngIf="messageErreur" style="color: red">{{ messageErreur }}</p>
+  <p>
+    Vous n'avez pas de compte? Inscrivez-vous
+    <a routerLink="/inscription">ici</a>.
+  </p>
+</div>
